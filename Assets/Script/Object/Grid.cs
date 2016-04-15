@@ -38,10 +38,10 @@ public class Grid : MonoBehaviour
             this.x = x;
             this.y = y;
         }
-        public Locator(Vector2 pos_on_grid,float unit_dis)
+        public Locator(Vector2 pos_on_grid, Grid grid)
         {
-            this.x = Mathf.CeilToInt((pos_on_grid.x + pos_on_grid.y - unit_dis) / (unit_dis * 2));
-            this.y = Mathf.CeilToInt((pos_on_grid.y - pos_on_grid.x - unit_dis) / (unit_dis * 2));
+            this.x = Mathf.CeilToInt((pos_on_grid.x + pos_on_grid.y - grid.unit_distance) / (grid.unit_distance * 2));
+            this.y = Mathf.CeilToInt((pos_on_grid.y - pos_on_grid.x - grid.unit_distance) / (grid.unit_distance * 2));
         }
     }
 
@@ -92,7 +92,7 @@ public class Grid : MonoBehaviour
     {
         Quaternion rotation = Quaternion.Euler(new Vector3(0.0f, 45.0f, 0.0f));
         Gizmos.matrix = Matrix4x4.TRS(cursor_position, rotation, new Vector3(1.0f, 1.0f, 1.0f));
-        Gizmos.DrawWireCube(new Vector3(0.0f, -0.5f, 0.0f), new Vector3(1.0f, 1.0f, 1.0f));
+        Gizmos.DrawWireCube(new Vector3(0.0f, 0.5f, 0.0f), new Vector3(1.0f, 1.0f, 1.0f));
     }
     private void DrawRectAreaGrid()
     {

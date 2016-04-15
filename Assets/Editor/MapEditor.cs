@@ -25,7 +25,7 @@ public class MapEditor : EditorWindow {
     }
     public void OnEnable()
     {
-        block_instance = Resources.Load<GameObject>("Prefabs/block");
+        block_instance = Resources.Load<GameObject>("Prefabs/block_3d");
         grid = GetGrid();
         GetMapObj();
         SceneView.onSceneGUIDelegate += OnSecneGUI;
@@ -139,7 +139,7 @@ public class MapEditor : EditorWindow {
         float distance = -((mouseRay.origin.y - grid.level_height * grid.level) / (mouseRay.direction.y));
         Vector3 position = mouseRay.origin + distance * mouseRay.direction;
         //對位置做計算，將其轉換成在Grid平面上的(X,Y)座標
-        Grid.Locator location = new Grid.Locator(new Vector2(position.x, position.z), grid.unit_distance);
+        Grid.Locator location = new Grid.Locator(new Vector2(position.x, position.z), grid);
         //在Scene上顯示目前滑鼠所在位置資訊
         Handles.BeginGUI();
         GUI.contentColor = Color.white;
